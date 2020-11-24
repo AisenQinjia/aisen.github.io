@@ -1,6 +1,9 @@
 // 设置画布
 
 const canvas = document.querySelector('canvas');
+let remainBallP = document.getElementById("remainBalls");
+
+
 const ctx = canvas.getContext('2d');
 
 const width = canvas.width = window.innerWidth;
@@ -94,6 +97,7 @@ EvilCircle.prototype.collisionDetect = function() {
                 ball.exist = false;
                 ball.color = "black"
                 balls.splice(j, 1);
+                remainBallP.innerText = "remain " + balls.length + " balls";
             }
         }
     }
@@ -186,5 +190,5 @@ function loop() {
     evilCircle.draw();
     requestAnimationFrame(loop);
 }
-
+remainBallP.innerText = "remain " + balls.length + " balls";
 loop();

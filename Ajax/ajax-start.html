@@ -69,7 +69,7 @@
             updateDisplay(verse);
 
         }
-        updateDisplay('Verse 1');
+        updateDisplayWithFetch('Verse 1');
         verseChoose.value = 'Verse 1';
 
         function updateDisplay(verse) {
@@ -81,6 +81,16 @@
                 poemDisplay.textContent = request.response;
             };
             request.send();
+        }
+
+        function updateDisplayWithFetch(verse) {
+            let url = verse.replace(" ", "").toLowerCase() + ".txt";
+            fetch(url)
+                .then(function(response) {
+                    return response.text();
+                }).then(function(text) {
+                    poemDisplay.textContent = text;
+                });
         }
     </script>
 </body>
